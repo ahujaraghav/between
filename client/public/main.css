@@ -1,0 +1,39 @@
+.w-60{
+    margin: 40px auto ! important;
+    width: 60%;
+}
+
+.shadow{
+    box-shadow: 0 0 10px rgba(21, 21, 21, 0.139);
+}
+
+.w-logo{
+    width: 5%;
+    margin: 0px 10px;
+}
+
+.font-custom-1{
+    font-family: 'Nunito',sans-serif;
+}
+
+.fa-check-circle{
+    color: green;
+}
+
+.fa-times-circle{
+    color:red;;
+}
+
+.feedback-icon{
+    position: absolute;
+    width: auto;
+    top: 8px;
+    right: 10px;
+    margin-top: 0;
+}
+
+.is-invalid{
+    box-shadow: 0 0 4px red;
+}
+
+
