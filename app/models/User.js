@@ -27,6 +27,25 @@ userSchema.pre('save', function (next) {
     }
 })
 
+userSchema.statics.verify = function (email, password) {
+    const User = this
+    return User.findOne({ email })
+        .then((user) => {
+            return bcrypt.compare(password, user.password)
+                .then((match) => {
+                    // console.log(match)
+                    if (match) {
+                        return Promise.resolve(user)
+                    } else {
+                        return Promise.reject("Password does not match")
+                    }
+                })
+        })
+        .catch(() => {
+            return Promise.reject("No email found")
+        })
+}
+
 userSchema.methods.generateToken = function () {
     const user = this
     const tokenData = {

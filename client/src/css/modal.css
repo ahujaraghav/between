@@ -1,0 +1,15 @@
+.custom-modal .modal-dialog{
+    max-width:100% !important;
+    height: 100vh;
+    margin: 0px !important;
+}
+
+.custom-modal .modal-header{
+    border-bottom: 0px !important;
+}
+
+.custom-modal .modal-content{
+    border:0px !important;
+    padding: 30px;
+    height: 100%;
+}

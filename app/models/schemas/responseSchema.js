@@ -7,7 +7,10 @@ const responseSchema = new Schema({
         ref:'User'
     },
     body:String,
-    createdAt:Date
+    createdAt:{
+        type:Date,
+        default: Date.now
+    }
 })
 
 module.exports = {

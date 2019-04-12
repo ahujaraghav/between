@@ -3,7 +3,8 @@ const Schema = mongoose.Schema
 
 const tagSchema = new Schema({
     name:{
-        type:String
+        type:String,
+        required: true
     },
     stories:[{
         type:Schema.Types.ObjectId,

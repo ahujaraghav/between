@@ -1,0 +1,136 @@
+.w-60{
+    margin: 40px auto ! important;
+    width: 60%;
+}
+
+.shadow{
+    box-shadow: 0 0 10px rgba(21, 21, 21, 0.139);
+}
+
+.w-logo{
+    width: 5%;
+    margin: 0px 10px;
+}
+
+.font-custom-1{
+    font-family: 'Nunito',sans-serif;
+}
+.font-custom-2{
+    font-family: 'Nunito',sans-serif;
+    font-weight: 900;
+}
+
+.fa-check-circle{
+    color: green;
+}
+
+.fa-times-circle{
+    color:red;;
+}
+
+.feedback-icon{
+    position: absolute;
+    width: auto;
+    top: 8px;
+    right: 10px;
+    margin-top: 0;
+}
+
+.is-invalid{
+    box-shadow: 0 0 4px red;
+}
+
+.btn-custom-1:hover{
+    background: transparent;
+    color: green;    
+}
+
+.hover-unmute:hover,.active{
+    color: black !important ;
+}
+
+.border-bottom-1{
+    border-bottom: 1px solid #dee2e6;
+}
+
+.border-right-1{
+    border-right: 1px solid #dee2e6;
+}
+
+.ml-10{
+    margin-left: 150px;
+}
+
+.pointer{
+    cursor: pointer;
+}
+
+.show.dropdown-menu {
+    display: block;
+    position: absolute;
+  }
+
+.dropdown-custom{
+    background: rgb(255, 255, 255);
+    list-style-type: none;
+    position: absolute;
+    top:10px;
+    left: 230px;
+    padding: 10px;
+}
+
+.show{
+    visibility: visible;
+}
+.hide{
+    visibility: hidden;
+}
+
+.dropdown a, .dropdown a:hover{
+    text-decoration: none ;
+    color: black;
+}
+
+
+.google-circle{
+    background: purple;
+    color: white;
+    padding: 10px 15px;  
+    border-radius: 50%;
+    font-size: 1.2rem;
+}
+
+.google-circle-2{
+    background: purple;
+    color: white;
+    padding: 10px 17px;  
+    border-radius: 50%;
+    font-size: 1.0rem;
+    align-self: center;
+}
+
+
+
+.d-custom-inline,.d-custom-inline div{
+    display: inline;
+}
+
+.shadow-bottom{
+    box-shadow: 0px 2px 5px rgba(138, 171, 122, 0.482);
+}
+
+.custom-nav-link{
+    font-size: 0.8rem;
+    color: black;
+    margin: 5px;
+}
+
+.z-top{
+    z-index: 1025 !important;
+}
+
+.w-70{
+    width:70%;
+}
+
+

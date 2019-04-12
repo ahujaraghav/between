@@ -63,8 +63,9 @@ class UserSignUp extends React.Component {
         if (results.allOk) {
             axios.post('/users', formData)
                 .then((response) => {
-                    localStorage.setItem('x-auth', response.data)
-                    axios.defaults.headers['x-auth'] = response.data
+                    localStorage.setItem('x-auth', response.data.token) 
+                    localStorage.setItem('user', response.data.user) 
+                    axios.defaults.headers['x-auth'] = response.data.token
                     this.props.history.push('/')
                 })
         }
@@ -244,7 +245,7 @@ class UserSignUp extends React.Component {
                     <h2 class="mt-5 font-custom-1">Join Between.</h2>
                     <p class="px-5 font-custom-1">Create an account to receive great stories in your inbox, personalize your homepage,
                     and follow authors and topics that you love.</p>
-                    <div class="m-5 w-60 mt-c-5">
+                    <div class="w-60 mt-c-5">
                         {
                             Object.keys(this.state.inputFields).map((field) => {
                                 const obj = this.state.inputFields
