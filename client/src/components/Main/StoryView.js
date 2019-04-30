@@ -4,19 +4,34 @@ import parser from 'html-react-parser'
 
 import Response from './Response'
 
+import ClapsImg from '../../images/claps.png'
+
 class StoryView extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
             story: undefined,
             user: props.user,
-            following: undefined
+            following: undefined,
+            claps: 0
         }
     }
     getReadTime(body) {
         const words = body.split(' ').length
         // console.log(words)
         return Math.ceil(words / 180)
+    }
+
+    handleClaps = () => {
+       
+        axios.put(`/story/${this.state.story._id}/claps`)
+        .then((response)=>{
+         
+            this.setState(()=>({claps: response.data.claps}))
+        })
+        .catch((err)=>{
+            console.log(err)
+        })
     }
 
     toggleFollow = (e) => {
@@ -37,28 +52,28 @@ class StoryView extends React.Component {
     }
 
     // used by responses also
-    updateStory = ()=>{
+    updateStory = () => {
         axios.get(`/${this.props.match.params.id}`)
-        .then((response) => {
-            let following
-            if (this.state.user) {
-                if (this.state.user.following.includes(response.data.user._id)) {
-                    following = true
-                } else {
-                    // console.log(false)
-                    following = false
+            .then((response) => {
+                let following
+                if (this.state.user) {
+                    if (this.state.user.following.includes(response.data.user._id)) {
+                        following = true
+                    } else {
+                        // console.log(false)
+                        following = false
+                    }
                 }
-            }
-            let story = response.data
-            story.readTime = this.getReadTime(story.body.replace(/(<([^>]+)>)/ig, ""))
-            story.title = parser(story.title)
-            story.body = parser(story.body)
-            story.publishDate = new Date(story.publishDate).toString().split(' ').splice(1, 3).join(' ')
-            // console.log(this.state.user)
-            // console.log(story)
+                let story = response.data
+                story.readTime = this.getReadTime(story.body.replace(/(<([^>]+)>)/ig, ""))
+                story.title = parser(story.title)
+                story.body = parser(story.body)
+                story.publishDate = new Date(story.publishDate).toString().split(' ').splice(1, 3).join(' ')
+                // console.log(this.state.user)
+                // console.log(story)
 
-            this.setState(() => ({ story, following }))
-        })
+                this.setState(() => ({ story, following }))
+            })
     }
 
     // used to update responses
@@ -125,16 +140,24 @@ class StoryView extends React.Component {
                         {story.body}
                     </div>
                     <div>
-                        <h6>
+                        <div>
                             {
                                 story.tags.map((tag) => {
-                                    return <span className="badge badge-secondary p-2 mr-2">{tag.name}</span>
+                                    return <span className="badge badge-custom p-2 mr-2">{tag.name}</span>
                                 })
                             }
-                        </h6>
+
+                        </div>
+                        <div className="my-3">
+                            <button onClick={this.handleClaps} className="claps-button"><img src={ClapsImg} style={{ width: '35px' }} alt="claps"></img><span>{this.state.claps}</span></button>
+                            <span style={{ fontSize: '22px', color: 'grey' }} className="float-right my-auto mt-3">
+                                <i class="far fa-comments mr-3"></i>
+                                <i class="far fa-bookmark"></i>
+                            </span>
+                        </div>
                     </div>
-                    <div className="mt-5 pt-3 border-top">
-                        <Response 
+                    <div className="pt-3 border-top">
+                        <Response
                             story={this.state.story}
                             updateStory={this.updateStory}
                             responses={this.state.story.responses}

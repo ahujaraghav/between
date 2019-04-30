@@ -92,7 +92,7 @@ class StoryPublish extends React.Component {
                         <div className="container p-5 col-6">
                             <h6 className="">Include a high-quality image in your story to make it more inviting to readers.</h6>
                             <div class="custom-file">
-                                <input type="file" type="file" ref={this.state.fileInputRef} />
+                                <input type="file" ref={this.state.fileInputRef} />
                             </div>
                             <input className="custom-file-input" />
                             <h6>Select the Topic of your story</h6>

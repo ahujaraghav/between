@@ -133,4 +133,15 @@
     width:70%;
 }
 
+.claps-button{
+    padding: 15px;
+    border: 1px solid rgba(169, 166, 166, 0.591);
+    border-radius: 50%;
+}
+
+.badge-custom{
+    color: rgba(0,0,0,.68);
+    background:  rgba(0,0,0,.05);
+}
+
 

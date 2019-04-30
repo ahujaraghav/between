@@ -79,8 +79,8 @@ router.get('/topic/:topic', (req, res, next) => {
             })
     }
     query.populate({
-        path:'user',
-        select:'name'
+        path: 'user',
+        select: 'name'
     })
         .sort({ publishDate: -1 })
         .then((stories) => {
@@ -214,6 +214,38 @@ router.delete('/:id', authenticateUser, (req, res, next) => {
         })
         .catch(() => {
             res.sendStatus(404)
+        })
+})
+
+router.put('/:id/claps', authenticateUser, (req, res, next) => {
+    const user = req.user
+    const id = req.params.id
+    Story.findById(id)
+        .then((story) => {
+            let claps = 1;
+            let flag = false
+            story.claps.find((clap) => {
+                if (String(clap.user) == user._id) {
+                    if (clap.counts < 5) {
+                        clap.counts++
+                    }
+                    claps = clap.counts
+                    flag = true
+                    return
+                }
+            })
+            
+            if (!flag) {
+                story.claps.push({ user: user._id, counts: claps })
+            }
+            story.save()
+                .then((story) => {
+                    res.send({claps})
+                })
+
+        })
+        .catch(() => {
+
         })
 })
 

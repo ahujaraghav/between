@@ -8,6 +8,9 @@ router.get('/:id', (req, res, next) => {
     .populate('user')
     .populate('tags')
     .populate({
+        path: 'claps.user'
+    })
+    .populate({
         path:'responses.user',
         // sort : {createdAt:-1}
     })
